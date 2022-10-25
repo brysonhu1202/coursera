@@ -1,4 +1,6 @@
 #swirl Lesson 
+library(swirl)
+swirl()
 
   #Workspace and Files
 list.files() #读取当前文件目录
@@ -71,3 +73,46 @@ my_data <- data.frame(patients, my_matrix) #这个可以有多种class
 class(my_data)
 cnames <- c("patient", "age", "weight", "bp", "rating", "test")
 colnames(my_data) <- cnames #加表头
+
+  #Logic 
+TRUE & c(TRUE, FALSE, FALSE) # return TRUE FALSE FALSE
+TRUE && c(TRUE, FALSE, FALSE) #return TRUE
+TRUE | c(TRUE, FALSE, FALSE) #return TRUE TRUE TRUE
+TRUE || c(TRUE, FALSE, FALSE) # return TRUE
+isTRUE(6 > 4) # return TRUE
+identical('twins', 'twins') # return TRUE ;two R objects passed to it as arguments are identical
+xor(5 == 6, !FALSE) #return TRUE ;one FALSE one TRUE
+ints <- sample(10) #crate vector
+which(ints > 7) # return 2  7 10 ; numbers
+all(ints > 0) #return TRUE
+any(ints < 0)  #return FALSE
+
+  #Functions  
+"%p%" <- function(left, right){ # example:'I' %p% 'love' %p% 'R!' > "I love R!"
+  paste(left, right, sep = " ") 
+}
+
+evaluate <- function(func, dat){
+    # Write your code here!
+    # Remember: the last expression evaluated will be returned! 
+    func(dat)
+}
+evaluate(function(x){c(x+4, x, x-4)}, 4) #rturn 8 4 0
+evaluate(function(x){x[length(x)]}, c(8, 4, 0)) #return 0
+evaluate(function(x){x[1]}, c(8, 4, 0)) #return 8
+
+telegram <- function(...){
+  paste("START", ..., "STOP")
+}
+telegram(1, 2, 3, 4) #return "START 1 2 3 4 STOP"
+
+mad_libs <- function(...){
+  # Do your argument unpacking here!
+  args <- list(...)
+  place <- args[["place"]]
+  adjective <- args[["adjective"]]
+  noun <- args[["noun"]]
+  paste("News from", place, "today where", adjective, "students took to the streets in protest of the new", noun, "being installed on campus.")
+} #text replace
+
+mad_libs() #return "News from  today where  students took to the streets in protest of the new  being installed on campus."
