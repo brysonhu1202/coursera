@@ -116,3 +116,17 @@ mad_libs <- function(...){
 } #text replace
 
 mad_libs() #return "News from  today where  students took to the streets in protest of the new  being installed on campus."
+
+#Dates and Times
+d1 <- Sys.Date()
+unclass(d1) #to see what d1 looks like internally
+d2 <- as.Date("1969-01-01")
+t1 <- Sys.time()
+class(t1) #"POSIXct" "POSIXt" 
+t2 <- as.POSIXlt(Sys.time()) # "2022-10-27 19:56:25 CST"
+class(t2) #"POSIXlt" "POSIXt" 
+t2$min # 56
+t3  <- "October 17, 1986 08:24"
+t4 <- strptime(t3, "%B %d, %Y %H:%M")
+Sys.time() > t1 #TRUE
+Sys.time() - t1 #Time difference of 7.400876 mins
